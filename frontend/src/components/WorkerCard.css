@@ -1,0 +1,73 @@
+.worker-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.worker-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.worker-avatar {
+  border: 2px solid var(--color-primary-glow);
+}
+
+.worker-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  flex: 1;
+}
+
+.worker-name {
+  font-size: 16px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.worker-category {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.worker-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.worker-detail {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+.worker-detail span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.worker-price {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.worker-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
