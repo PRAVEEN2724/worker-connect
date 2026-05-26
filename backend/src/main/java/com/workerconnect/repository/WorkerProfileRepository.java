@@ -13,9 +13,9 @@ public interface WorkerProfileRepository extends JpaRepository<WorkerProfile, Lo
     Optional<WorkerProfile> findByUserId(Long userId);
 
     @Query("SELECT w FROM WorkerProfile w WHERE " +
-           "(:city IS NULL OR LOWER(w.user.city) LIKE LOWER(CONCAT('%', :city, '%'))) AND " +
-           "(:pincode IS NULL OR w.user.pincode = :pincode) AND " +
-           "(:category IS NULL OR LOWER(w.category) LIKE LOWER(CONCAT('%', :category, '%')))")
+           "(COALESCE(:city, '') = '' OR LOWER(w.user.city) LIKE LOWER(CONCAT('%', :city, '%'))) AND " +
+           "(COALESCE(:pincode, '') = '' OR w.user.pincode = :pincode) AND " +
+           "(COALESCE(:category, '') = '' OR LOWER(w.category) LIKE LOWER(CONCAT('%', :category, '%')))")
     List<WorkerProfile> searchWorkers(@Param("city") String city,
                                       @Param("pincode") String pincode,
                                       @Param("category") String category);

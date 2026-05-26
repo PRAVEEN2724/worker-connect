@@ -10,8 +10,8 @@ public interface JobRepository extends JpaRepository<Job, Long> {
     List<Job> findByWorkerIdOrderByCreatedAtDesc(Long workerId);
 
     @Query("SELECT j FROM Job j WHERE j.status = 'OPEN' AND " +
-           "(:city IS NULL OR LOWER(j.city) LIKE LOWER(CONCAT('%', :city, '%'))) AND " +
-           "(:category IS NULL OR LOWER(j.category) LIKE LOWER(CONCAT('%', :category, '%'))) AND " +
+           "(COALESCE(:city, '') = '' OR LOWER(j.city) LIKE LOWER(CONCAT('%', :city, '%'))) AND " +
+           "(COALESCE(:category, '') = '' OR LOWER(j.category) LIKE LOWER(CONCAT('%', :category, '%'))) AND " +
            "(:minWage IS NULL OR j.wagePerDay >= :minWage)")
     List<Job> searchJobs(@Param("city") String city,
                          @Param("category") String category,
